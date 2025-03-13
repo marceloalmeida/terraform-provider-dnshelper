@@ -65,6 +65,7 @@ func (p *DnshelperProvider) DataSources(ctx context.Context) []func() datasource
 func (p *DnshelperProvider) Functions(ctx context.Context) []func() function.Function {
 	return []func() function.Function{
 		tffunction.NewSPFBuilderFunction,
+		tffunction.NewCAABuilderFunction,
 	}
 }
 
