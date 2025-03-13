@@ -13,6 +13,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+
+	tffunction "github.com/marceloalmeida/terraform-provider-dnshelper/internal/function"
 )
 
 var _ provider.Provider = &DnshelperProvider{}
@@ -61,7 +63,9 @@ func (p *DnshelperProvider) DataSources(ctx context.Context) []func() datasource
 }
 
 func (p *DnshelperProvider) Functions(ctx context.Context) []func() function.Function {
-	return []func() function.Function{}
+	return []func() function.Function{
+		tffunction.NewSPFBuilderFunction,
+	}
 }
 
 func New(version string) func() provider.Provider {

@@ -9,7 +9,6 @@ This Terraform provider helps manage DNS records.
 
 Full documentation is available in the [docs](docs/) directory or on the [Terraform Registry](https://registry.terraform.io/providers/marceloalmeida/terraform-provider-dnshelper/latest/docs).
 
-
 ## Building The Provider
 
 1. Clone the repository
@@ -58,8 +57,8 @@ This provider is licensed under the [LICENSE](LICENSE) file.
 
 If you wish to work on the provider, you'll need:
 
-* [Go](https://www.golang.org) (version 1.24 or later)
-* [Terraform](https://www.terraform.io/downloads.html) (version 1.8 or later)
+* [Go](https://www.golang.org) (version 1.19 or later)
+* [Terraform](https://www.terraform.io/downloads.html) (version 1.0 or later)
 
 To compile the provider:
 
