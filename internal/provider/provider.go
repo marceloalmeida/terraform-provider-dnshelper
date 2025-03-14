@@ -66,6 +66,7 @@ func (p *DnshelperProvider) Functions(ctx context.Context) []func() function.Fun
 	return []func() function.Function{
 		tffunction.NewSPFBuilderFunction,
 		tffunction.NewCAABuilderFunction,
+		tffunction.NewDmarcBuilderFunction,
 	}
 }
 
