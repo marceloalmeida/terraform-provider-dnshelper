@@ -25,10 +25,6 @@ func BuildSPFRecordWithResolver(domain string, overflow string, txtMaxSize int32
 		return nil, fmt.Errorf("failed to parse SPF record: %w", err)
 	}
 
-	for _, domain := range flatten {
-		rec = rec.Flatten(domain)
-	}
-
 	if txtMaxSize < 1 {
 		return nil, fmt.Errorf("txtMaxSize must be greater than 0")
 	}
@@ -36,6 +32,12 @@ func BuildSPFRecordWithResolver(domain string, overflow string, txtMaxSize int32
 	if !strings.Contains(overflow, "%d") {
 		return nil, fmt.Errorf("split format `%s` in `%s` is not proper format (missing `%%d`)", overflow, domain)
 	}
+
+	for _, domain := range flatten {
+		rec = rec.Flatten(domain)
+	}
+
+	rec = dedup(rec)
 
 	splitRec := rec.TXTSplit(overflow+"."+domain, 0, int(txtMaxSize))
 
@@ -48,4 +50,18 @@ func BuildSPFRecordWithResolver(domain string, overflow string, txtMaxSize int32
 	}
 
 	return result, nil
+}
+
+func dedup(s *spflib.SPFRecord) *spflib.SPFRecord {
+	seen := map[string]bool{}
+	newParts := make([]*spflib.SPFPart, 0, len(s.Parts))
+	for _, p := range s.Parts {
+		if seen[p.Text] {
+			continue
+		}
+		seen[p.Text] = true
+		newParts = append(newParts, p)
+	}
+	s.Parts = newParts
+	return s
 }

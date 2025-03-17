@@ -102,7 +102,6 @@ func TestBuildSPFRecord(t *testing.T) {
 			want:              nil,
 			wantErr:           true,
 		},
-
 		{
 			name:              "invalid spf record",
 			domain:            "example.com",
@@ -113,6 +112,19 @@ func TestBuildSPFRecord(t *testing.T) {
 			flatten:           []string{},
 			want:              nil,
 			wantErr:           true,
+		},
+		{
+			name:              "Duplicate IPv4",
+			domain:            "example.com",
+			overflow:          "spf%d",
+			txtMaxSize:        255,
+			domainOnRecordKey: false,
+			parts:             []string{"v=spf1", "ip4:192.168.2.1/32", "include:_spf.example-dup.org", "-all"},
+			flatten:           []string{"example-dup.org", "_spf.example-dup.org"},
+			want: map[string][]string{
+				"@": {"v=spf1 ip4:192.168.2.1/32 -all"},
+			},
+			wantErr: false,
 		},
 	}
 
