@@ -7,7 +7,7 @@ This Terraform provider helps manage DNS records.
 
 ## Documentation
 
-Full documentation is available in the [docs](docs/) directory or on the [Terraform Registry](https://registry.terraform.io/providers/marceloalmeida/terraform-provider-dnshelper/latest/docs).
+Full documentation is available in the [docs](docs/) directory or on the [Terraform Registry](https://registry.terraform.io/providers/marceloalmeida/dnshelper/latest/docs).
 
 ## Building The Provider
 
