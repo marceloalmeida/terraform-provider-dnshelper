@@ -12,7 +12,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/function"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/spfbuilder"
+	"github.com/marceloalmeida/terraform-provider-dnshelper/dnshelper/spfbuilder"
 	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/testutil"
 )
 

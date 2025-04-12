@@ -9,7 +9,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/function"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/dmarcbuilder"
+	"github.com/marceloalmeida/terraform-provider-dnshelper/dnshelper/dmarcbuilder"
 )
 
 var (

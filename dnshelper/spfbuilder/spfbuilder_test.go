@@ -6,7 +6,7 @@ package spfbuilder_test
 import (
 	"testing"
 
-	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/spfbuilder"
+	"github.com/marceloalmeida/terraform-provider-dnshelper/dnshelper/spfbuilder"
 	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/testutil"
 )
 

@@ -6,7 +6,7 @@ package caabuilder_test
 import (
 	"testing"
 
-	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/caabuilder"
+	"github.com/marceloalmeida/terraform-provider-dnshelper/dnshelper/caabuilder"
 )
 
 func TestCAABuilder_NoIssue(t *testing.T) {

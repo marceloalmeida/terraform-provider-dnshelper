@@ -6,7 +6,7 @@ package dmarcbuilder_test
 import (
 	"testing"
 
-	"github.com/marceloalmeida/terraform-provider-dnshelper/internal/dmarcbuilder"
+	"github.com/marceloalmeida/terraform-provider-dnshelper/dnshelper/dmarcbuilder"
 )
 
 func TestDmarcBuilder(t *testing.T) {
