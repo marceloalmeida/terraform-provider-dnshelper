@@ -28,7 +28,7 @@ func (m *MockResolver) GetSPF(domain string) (string, error) {
 }
 
 func NewMockResolver() spflib.Resolver {
-	res, err := spflib.NewCache("../testutil/testdata-dns.json")
+	res, err := spflib.NewCache("../../internal/testutil/testdata-dns.json")
 	if err != nil {
 		log.Fatalf("error creating mock resolver: %v", err)
 		return nil
