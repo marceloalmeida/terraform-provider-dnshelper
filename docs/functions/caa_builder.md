@@ -66,4 +66,3 @@ caa_builder(iodef string, iodef_critical bool, issue list of string, issue_criti
 1. `issue_critical` (Boolean) Boolean if issue is required/critical
 1. `issuewild` (List of String) Allowed CAs which can issue wildcard certificates for this domain
 1. `issuewild_critical` (Boolean) Boolean if issuewild is required/critical
-

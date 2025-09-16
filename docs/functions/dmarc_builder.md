@@ -65,4 +65,3 @@ dmarc_builder(version string, policy string, subdomain_policy string, alignment_
 1. `failure_options` (String) String containing is passed raw (fo=, default: '0')
 1. `failure_format` (String) Format in which failure reports are requested (rf=, default: 'afrf')
 1. `report_interval` (Number) Interval in which reports are requested (ri=)
-
