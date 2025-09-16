@@ -61,4 +61,3 @@ spf_builder(domain string, overflow string, txt_max_size number, domain_on_recor
 1. `domain_on_record_key` (Boolean) Whether to include the TLD on the record key
 1. `parts` (List of String) SPF parts
 1. `flatten` (List of String) A list of domains to flatten
-
