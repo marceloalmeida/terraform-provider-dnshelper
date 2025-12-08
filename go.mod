@@ -3,7 +3,7 @@ module github.com/marceloalmeida/terraform-provider-dnshelper
 go 1.25
 
 require (
-	github.com/StackExchange/dnscontrol/v4 v4.28.1
+	github.com/StackExchange/dnscontrol/v4 v4.28.2
 	github.com/hashicorp/go-version v1.8.0
 	github.com/hashicorp/terraform-plugin-framework v1.17.0
 	github.com/hashicorp/terraform-plugin-go v0.29.0
