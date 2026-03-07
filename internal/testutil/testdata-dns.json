@@ -16,5 +16,8 @@
   },
   "_spf.example-dup.org": {
     "SPF": "v=spf1 ip4:192.168.2.1/32 ~all"
+  },
+  "_spf.example-unsorted.com": {
+    "SPF": "v=spf1 ip4:192.168.1.9/32 ip4:192.168.1.1/32 ip4:192.168.1.5/32 ip4:192.168.1.3/32 ~all"
   }
 }

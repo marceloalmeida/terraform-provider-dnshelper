@@ -5,6 +5,7 @@ package spfbuilder
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/StackExchange/dnscontrol/v4/pkg/spflib"
@@ -38,6 +39,7 @@ func BuildSPFRecordWithResolver(domain string, overflow string, txtMaxSize int32
 	}
 
 	rec = dedup(rec)
+	rec = sortParts(rec)
 
 	splitRec := rec.TXTSplit(overflow+"."+domain, 0, int(txtMaxSize))
 
@@ -62,6 +64,45 @@ func dedup(s *spflib.SPFRecord) *spflib.SPFRecord {
 		seen[p.Text] = true
 		newParts = append(newParts, p)
 	}
+	s.Parts = newParts
+	return s
+}
+
+// sortParts sorts the parts of an SPF record for stable output, keeping
+// "v=spf1" first and any "all" qualifier last, with all other mechanisms
+// sorted alphabetically in between.
+func sortParts(s *spflib.SPFRecord) *spflib.SPFRecord {
+	isVersion := func(text string) bool {
+		return text == "v=spf1"
+	}
+
+	isAll := func(text string) bool {
+		return text == "all" || text == "+all" || text == "-all" || text == "~all" || text == "?all"
+	}
+
+	var versionParts []*spflib.SPFPart
+	var allParts []*spflib.SPFPart
+	var middleParts []*spflib.SPFPart
+
+	for _, p := range s.Parts {
+		switch {
+		case isVersion(p.Text):
+			versionParts = append(versionParts, p)
+		case isAll(p.Text):
+			allParts = append(allParts, p)
+		default:
+			middleParts = append(middleParts, p)
+		}
+	}
+
+	sort.Slice(middleParts, func(i, j int) bool {
+		return middleParts[i].Text < middleParts[j].Text
+	})
+
+	newParts := make([]*spflib.SPFPart, 0, len(s.Parts))
+	newParts = append(newParts, versionParts...)
+	newParts = append(newParts, middleParts...)
+	newParts = append(newParts, allParts...)
 	s.Parts = newParts
 	return s
 }
