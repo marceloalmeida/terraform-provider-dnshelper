@@ -68,9 +68,13 @@ func dedup(s *spflib.SPFRecord) *spflib.SPFRecord {
 	return s
 }
 
-// sortParts sorts the parts of an SPF record for stable output, keeping
-// "v=spf1" first and any "all" qualifier last, with all other mechanisms
-// sorted alphabetically in between.
+// sortParts sorts the parts of an SPF record for stable, deterministic output,
+// keeping "v=spf1" first and any "all" qualifier last, with all other mechanisms
+// sorted alphabetically in between. Alphabetical ordering is used because it is
+// simple, deterministic, and sufficient to prevent unnecessary diffs in Terraform
+// plans caused by non-deterministic DNS resolver response ordering. Note that
+// this results in lexicographic IP ordering (e.g. "10" before "2"), which is
+// intentional as consistency takes priority over numeric readability.
 func sortParts(s *spflib.SPFRecord) *spflib.SPFRecord {
 	isVersion := func(text string) bool {
 		return text == "v=spf1"
