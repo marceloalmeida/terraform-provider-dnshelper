@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/StackExchange/dnscontrol/v4 v4.36.1
-	github.com/hashicorp/go-version v1.8.0
+	github.com/hashicorp/go-version v1.9.0
 	github.com/hashicorp/terraform-plugin-framework v1.18.0
 	github.com/hashicorp/terraform-plugin-go v0.30.0
 	github.com/hashicorp/terraform-plugin-testing v1.14.0
