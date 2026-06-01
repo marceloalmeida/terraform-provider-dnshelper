@@ -1,6 +1,6 @@
 module github.com/marceloalmeida/terraform-provider-dnshelper
 
-go 1.25.0
+go 1.25.8
 
 require (
 	github.com/StackExchange/dnscontrol/v4 v4.36.1
